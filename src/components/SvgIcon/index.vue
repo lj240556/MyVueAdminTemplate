@@ -16,10 +16,12 @@ import { isExternal } from '@/utils/validate'
 
 //父组件引用子组件
 //1.引入   import
-//2。注册   在components里面注册
+//2。注册   在components里面注册7
 //3.使用   使用v-bind:newLists 给props传值
 //
 export default {
+
+  //我们期望使用svg-icon组件来统一使用所有的svg文件，通过指定name来变更对应的svg文件。
   name: 'SvgIcon',
   props: {
     iconClass: {
