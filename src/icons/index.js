@@ -17,7 +17,7 @@ const req = require.context('./svg', false, /\.svg$/)
 
 
 
-//执行结果就是逐项引入模块.
+//执行结果就是逐项引入模块. 把所有的模块都引入到项目中
 const requireAll22 = requireContext => requireContext.keys().map(requireContext)
 //console.log(requireAll22,"this is  require .context")
 requireAll22(req)

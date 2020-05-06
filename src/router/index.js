@@ -32,6 +32,7 @@ import Layout from '@/layout'
  */
 export const constantRoutes = [
   {
+    name: 'login',
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
@@ -165,6 +166,9 @@ export const constantRoutes = [
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
+  //scrollBehavior  页面拉动滚动条，然后刷新浏览器 会发现滚动条依然在原来的位置，这是浏览器的默认行为，会记录浏览器滚动条默认位置。
+  //  但是点击浏览器“前进/后退”按钮，会发现当初那个页面的滚动条从0开始了，没有记录上一次滚动条的位置。
+  //现在要求点击浏览器“前进/后退”按钮，页面滚动条要记录上一次的位置，这时需要设置它的的滚动行为。
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })

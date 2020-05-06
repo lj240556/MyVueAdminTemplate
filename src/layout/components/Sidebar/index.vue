@@ -17,6 +17,8 @@
       <!--哪里来的??-->
         <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
+
+      
     </el-scrollbar>
   </div>
 </template>
