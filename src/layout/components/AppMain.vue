@@ -1,6 +1,7 @@
 <template>
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
+      <!--主页面的渲染载体，只需包含一个router-view元素即可，不同路由对应的组件都会在这个页面进行渲染展示。-->
       <router-view :key="key" />
     </transition>
   </section>

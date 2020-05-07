@@ -28,7 +28,15 @@ const mutations = {
 }
 
 const actions = {
-  // user login
+  // user login   这里的login其实是从api/user 下面导入过来的  并不是一个简单的字符串   而是一个函数
+
+  // export function login(data) {
+  //   return request({
+  //     url: '/vue-admin-template/user/login',
+  //     method: 'post',
+  //     data
+  //   })
+  // }
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {

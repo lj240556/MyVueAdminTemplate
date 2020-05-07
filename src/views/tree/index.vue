@@ -1,14 +1,14 @@
 <template>
   <div class="app-container">
     <el-input v-model="filterText" placeholder="Filter keyword" style="margin-bottom:30px;" />
-
+     <!-- data //需要展示的数据   props // 配置选项     filter-node-method="filterNode // 过滤节点的过滤方法    class   // 过滤树形节点  default-expand-all  // 默认都展开   -->
     <el-tree
       ref="tree2"
-      :data="data2"
-      :props="defaultProps"
-      :filter-node-method="filterNode"
-      class="filter-tree"
-      default-expand-all
+     :data="data2"     
+      :props="defaultProps"  
+      :filter-node-method="filterNode"  
+      class="filter-tree"  
+      default-expand-all    
     />
 
   </div>
@@ -62,7 +62,7 @@ export default {
     }
   },
   watch: {
-    filterText(val) {
+    filterText(val) {  // 每次该值变化，就触发树形组件的过滤方法，即下面的filterNode方法
       this.$refs.tree2.filter(val)
     }
   },

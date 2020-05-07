@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= webpackConfig.name %></title>
+    <script type="text/javascript">
+ 
+      alert(!!+undefined)//false
+      alert(!!+null)//false
+      alert("ssss"+!!+0)//false
+      alert(!!+"")//fase
+      alert(!!+"123456sss")//false
+      
+    </script>
+  
+
   </head>
   <body>
     <noscript>

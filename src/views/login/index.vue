@@ -88,7 +88,13 @@ export default {
   },
   watch: {
      //$route为当前router跳转对象，里面可以获取name、path、query、params等  其实是 to 要去的路由    去了以后就是当前路由了
+
      //route相当于当前正在跳转的路由对象
+
+     //在用 spa(单页面应用) 这种开发模式的之前，用户每次点击侧边栏都会重新请求这个页面，用户渐渐养成了点击侧边栏当前路由来刷新 view 的习惯。
+     //但现在 spa 就不一样了，用户点击当前高亮的路由并不会刷新 view，因为 vue-router 会拦截你的路由，它判断你的 url 并没有任何变化，
+     //所以它不会触发任何钩子或者是 view 的变化。
+
     $route: {
       handler: function(route) {
         //route.query会获取？后面的参数 http://localhost:9528/#/login?redirect=%2Fexample%2Ftable 
@@ -100,6 +106,7 @@ export default {
         console.log("router ceshi222 ", route.query.redirect)
       },
       immediate: true
+      // immediate: true //立即执行，而不是等到有变化时才执行
     }
   },
   methods: {
@@ -114,9 +121,12 @@ export default {
       })
     },
     handleLogin() {
+      //调用的是element ui提供的验证方法
       this.$refs.loginForm.validate(valid => {
+         //会验证该form所有字段的返回值，如果有不通过的valid就是false
         if (valid) {
           this.loading = true
+          //为什么会是路径？待研究
           this.$store.dispatch('user/login', this.loginForm).then(() => {
             this.$router.push({ path: this.redirect || '/' })
             this.loading = false
