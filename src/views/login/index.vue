@@ -128,12 +128,15 @@ export default {
           this.loading = true
           //为什么会是路径？待研究
           this.$store.dispatch('user/login', this.loginForm).then(() => {
+            //成功就跳转到首页
             this.$router.push({ path: this.redirect || '/' })
             this.loading = false
           }).catch(() => {
+
             this.loading = false
           })
         } else {
+          //失败就提示
           console.log('error submit!!')
           return false
         }

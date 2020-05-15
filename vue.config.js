@@ -24,11 +24,18 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: '/',
-  outputDir: 'dist',
-  assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
+  publicPath: '/',//// 基本路径
+  
+  outputDir: 'dist',// build时构建文件的目录 构建时传入 --no-clean 可关闭该行为
+
+  assetsDir: 'static',// build时放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录
+  
+  lintOnSave: process.env.NODE_ENV === 'development',// 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码 (在生产构建时禁用 eslint-loader)
+
+  // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建
   productionSourceMap: false,
+
+   // 所有 webpack-dev-server 的选项都支持
   devServer: {
     port: port,
     open: true,
@@ -38,6 +45,12 @@ module.exports = {
     },
     before: require('./mock/mock-server.js')
   },
+
+  // 如果你需要基于环境有条件地配置行为，或者想要直接修改配置，
+  //那就换成一个函数 (该函数会在环境变量被设置之后懒执行)。该方法的第一个参数会收到已经解析好的配置。
+  //在函数内，你可以直接修改配置，或者返回一个将会被合并的对象
+
+  //调整 webpack 配置
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
@@ -48,6 +61,8 @@ module.exports = {
       }
     }
   },
+
+   // 对内部的 webpack 配置（比如修改、增加Loader选项）(链式操作)  高级操作
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test
     config.plugins.delete('prefetch') // TODO: need test
